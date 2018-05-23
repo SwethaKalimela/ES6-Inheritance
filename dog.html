@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Inheritance</title>
+</head>
+<script>
+    class Dog { //Parent class Dog has name property & speak method
+        constructor(name) {
+            this.name = name;
+        }
+        speak() { 
+            return "Woof";
+        }
+    }
+    class Labrador extends Dog {
+        constructor(name, color, breedWeight) {
+            super(name); //should always be first argument and line in child class , this will call parent dogs constructor
+            this.color = color;
+            this.breedWeight = breedWeight;
+        }
+        speak() {                               //as we are over-ridding the same speak method, when we call this 
+              return "Labrador says "+super.speak()+" & Its name is "+this.name+", color & weight are "+this.color+","+this.breedWeight;     //with the object this method is only executed                        
+        //    return super.speak();            //use super.method_name if you want to call parent-dogs speak method from here 
+        }
+    }
+    let labrador = new Labrador("Junior","black","30kgs"); //creating the object to child class
+    console.log(labrador.speak());                          //this calls child class method only
+</script>
+<body>
+    
+</body>
+</html>
